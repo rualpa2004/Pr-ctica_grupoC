@@ -1,46 +1,46 @@
 const magos =[ 
     {
-        numMago:1,
+        MagoNuevoID:1,
         newNombreMago: 'Albus Dumbledore',
         newDescripcionMago: 'Director de la escuela Hogwarts de Magia y Hechicería. Llegó a ser considerado el mago más grande del mundo',
     },
     {
-        numMago:2,
+        MagoNuevoID:2,
         newNombreMago: 'Godric Griffindor',
         newDescripcionMago: 'Fundador de la casa Griffindor del colegio Hogwarts. Su espada es un objeto mágico muy importante durante el periodo escolar de Harry Potter en Hogwarts',
     },
     {
-        numMago:3,
+        MagoNuevoID:3,
         newNombreMago: 'Salazar Slytherin',
         newDescripcionMago: 'Fundador de la casa Slytherin del colegio Hogwarts. Creía que solo los sangre limpia podían estudiar magia.',
     },
     {
-        numMago:4,
+        MagoNuevoID:4,
         newNombreMago: 'Helga Hufflepuff',
         newDescripcionMago: 'Fundadora de la casa Hufflepuff del colegio Hogwarts. Aceptaba a todos los alumnos sin importar sus habilidades.',
     },
     {
-        numMago:5,
+        MagoNuevoID:5,
         newNombreMago: 'Rowena Ravenclaw',
         newDescripcionMago: 'Fundadora de la casa Ravenclaw del colegio Hogwarts. Su diadema fue uno de los múltiples horrocruxes realizados<br>por el mago tenebroso Voldemort.',
     },
     {
-        numMago:6,
+        MagoNuevoID:6,
         newNombreMago: 'Herpo el loco',
         newDescripcionMago: 'Mago tenebroso de la antigua Grecia. Es el primer mago conocido que consiguió realizar un horrocrux con éxito (un basilisco de ojos amarillos)',
     },
     {
-        numMago:7,
+        MagoNuevoID:7,
         newNombreMago: 'Harry Potter',
         newDescripcionMago: 'Estudiante de la casa Griffindor y discípulo de Albus Dumbledore. Es la única persona que ha sobrevido (dos veces) a la maldición asesina Avada Kedavra.',
     },
     {
-        numMago:8,
+        MagoNuevoID:8,
         newNombreMago: 'Merlín',
         newDescripcionMago: 'Considerado el mago más poderoso de la historia, era un mago medieval perteneciente a la casa Slytherin.',
     },
     {
-        numMago:9,
+        MagoNuevoID:9,
         newNombreMago: 'Newt Scamander',
         newDescripcionMago: 'Magizoólogo perteneciente a la casa Hufflepuff. Entre sus animales se encuentran escarbatos, un kelpie y un ave del trueno llamado Frank.',
     }
@@ -214,15 +214,16 @@ export function mostrarMagos(id) {
     return elements[id].magos;
 }
 
-let numMagoNuevo = magos.length + 1;
 
-export function nuevoMago(Mago) {
-    let nuevoMago = {
-        numMagoNuevo: Mago.numMagoNuevo++,
-        newNombreMago: Mago.newNombreMago,
-        newDescripcion: Mago.newDescripcion};
-    elements[Mago.id].magos.push(nuevoMago);
-    return Mago.id;
+export function nuevoMago(elementoID, nuevoMago) {
+    let elemento = elements.getElementByID(elementoID);
+    let numMagoNuevo = magos.length + 1;
+    let MagoNuevo = {
+        MagoNuevoID: MagoNuevo.numMagoNuevo++,
+        newNombreMago: MagoNuevo.newNombreMago,
+        newDescripcion: MagoNuevo.newDescripcion};
+    elements.magos.push(elemento, nuevoMago);
+    return MagoNuevo;
 }
 
 export function editarProducto(elementData) {

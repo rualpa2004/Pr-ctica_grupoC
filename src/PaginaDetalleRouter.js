@@ -44,12 +44,12 @@ router.post('/nuevoMago/:id', (req, res) => {
     res.render(`pagina_detalle_grupo/${req.params.id}`);
 });
 
-router.post('/GuardarMago',(req,res) => {
+router.post('pagina_detalle_grupoc/:id/GuardarMago',(req,res) => {
+    const elementoID = req.params.id;
     const nuevoMago = req.body;
-    const elements = productoService.getElementbByID(req.params.id);
-    productoService.nuevoMago(nuevoMago);
+    productoService.nuevoMago(elementoID, nuevoMago);
     console.log(nuevoMago);
-    res.render(`pagina_detalle_grupoc/${elements.id}`,(nuevoMago));
+    res.redirect('pagina_detalle_grupoc/' + elementoID);
 })
 
 
