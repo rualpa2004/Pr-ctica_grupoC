@@ -1,6 +1,6 @@
 import express from 'express';
 import * as productoService from './productoService.js';
-import { body, validationResult } from 'express-validator';
+import { check, validationResult } from 'express-validator';
 
 const router = express.Router();
 
@@ -22,13 +22,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/saveelemento', 
-    [body('newNombre').notEmpty().withMessage('Por favor, introduce un nombre válido.'),
-    // Resto de tus validaciones...
-    ], 
-    (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.render('nuevoElemento', { errors: errors.array() });
+    [ check('newNombre').notEmpty().withMessage('Por favor, introduce un nombre válido.'),
+    check('newDescripcion').notEmpty().withMessage('Por favor, introduce una descripción.'),
+    check('newPrecio').notEmpty().withMessage('Por favor, introduce un precio válido.'),
+    check('newEfectosSecundarios').notEmpty().withMessage('Por favor, introduce un efecto secundario.'),
+    check('newImagen1').notEmpty().withMessage('Por favor, introduce una imagen válida.'),
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        // Aquí puedes manejar los errores como quieras
+        // Por ejemplo, puedes enviarlos de vuelta al cliente
+        return res.render('nuevoElemento', { errors: errors.array() });
         }
         const newElement = productoService.newElement(req.body);
         res.redirect(`/pagina_detalle_grupoc/${newElement.id}`);

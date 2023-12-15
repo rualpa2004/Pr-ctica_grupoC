@@ -12,6 +12,14 @@ body {
   background-size: cover; /*Para cubrir toda la página*/
 }
 
+.iterar{
+  background-color: #3f03f4;
+  color: white;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+}
+
 .login-box {
   position: absolute; /*Para posicionar un elemento respecto a su contenedor posicionado más cercano*/
   top: 50%; 

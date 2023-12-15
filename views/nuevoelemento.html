@@ -14,15 +14,10 @@
     <div class="login-box">
         <h2>Crear elemento</h2>
         <form method="post" action="saveelemento" id="Formulario">
-          <% if (typeof errors !== 'undefined' && errors) { %>
-            <div class="alert alert-danger">
-                <ul>
-                    <% errors.forEach(function(error) { %>
-                        <li><%= error.msg %></li>
-                    <% }); %>
-                </ul>
-            </div>
-        <% } %>
+          {{#errors}}
+          <p class="iterar">{{msg}}</p>
+          {{/errors}}
+          <br>
           <div class="user-box">
             <input type="text" name="newNombre" value="{{element.newNombre}}">
             <label>Nombre</label>
