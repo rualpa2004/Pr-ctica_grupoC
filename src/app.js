@@ -20,4 +20,8 @@ app.use(express.static(__dirname + '/../public'));
 app.use('/', nuevoElementoRouter);
 app.use('/', PaginaDetalleRouter);
 
-app.listen(3000, () => console.log('Listening on port 3000!'));
+// Iniciar el servidor en el puerto 3000
+const PORT = 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});

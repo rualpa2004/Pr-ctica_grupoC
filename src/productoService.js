@@ -202,7 +202,24 @@ export function getAllElements() {
 export function addElement(element) {
     let id = nextId++;
     element.id = id.toString();
+    element.AllsubElements = []; // Crea un array vacío para los subelementos
+    element.nextSubElementId = 0;  // Crea un contador para los subelementos
     elements.set(element.id, element);
+}
+
+export function addSubElement(Id,subElement) { // Recibe el id del elemento padre y el subelemento
+    let elementFather = elements.get(Id); // Obtiene el elemento padre
+
+    if (elementFather) {
+        let id = elementFather.nextSubElementId++; // Crea un id para el subelemento y lo incrementa
+        subElement.id = id.toString(); // Convierte el id a string para que no de error
+        elementFather.AllsubElements.push(subElement); // Usa push para agregar el subelement al array
+        
+        return subElement;
+    } else {
+        console.error(`Elemento con id ${Id} no encontrado.`);
+        return null;
+    }
 }
 
 export function deleteElement(id){
