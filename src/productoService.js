@@ -236,11 +236,11 @@ export function nuevoMago(elementoID, nuevoMago) {
     let elemento = elements.getElementByID(elementoID);
     let numMagoNuevo = magos.length + 1;
     let MagoNuevo = {
-        MagoNuevoID: MagoNuevo.numMagoNuevo++,
+       MagoNuevoID: MagoNuevo.numMagoNuevo++, 
         newNombreMago: MagoNuevo.newNombreMago,
         newDescripcion: MagoNuevo.newDescripcion};
     elements.magos.push(elemento, nuevoMago);
-    return MagoNuevo;
+return MagoNuevo;
 }
 
 export function editarProducto(elementData) {
