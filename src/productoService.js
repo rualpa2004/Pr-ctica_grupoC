@@ -231,6 +231,18 @@ export function mostrarMagos(id) {
     return elements[id].magos;
 }
 
+
+export function nuevoMago(elementoID, nuevoMago) {
+    let elemento = elements.getElementByID(elementoID);
+    let numMagoNuevo = magos.length + 1;
+    let MagoNuevo = {
+        MagoNuevoID: MagoNuevo.numMagoNuevo++,
+        newNombreMago: MagoNuevo.newNombreMago,
+        newDescripcion: MagoNuevo.newDescripcion};
+    elements.magos.push(elemento, nuevoMago);
+    return MagoNuevo;
+}
+
 export function editarProducto(elementData) {
     const element = {
         id: elementData.id,
