@@ -38,18 +38,12 @@ router.get('/pagina_detalle_grupoc',(req,res) => {
     res.render('pagina_detalle_grupoc');
 })
 
-router.post('/nuevoMago/:id', (req, res) => {
-    let { numMagoNuevo, newNombreMago, newDescripcion } = req.body;
-    productoService.nuevoMago({ id: req.params.id, numMagoNuevo, newNombreMago, newDescripcion });
-    res.render(`pagina_detalle_grupo/${req.params.id}`);
-});
-
-router.post('pagina_detalle_grupoc/:id/GuardarMago',(req,res) => {
-    const elementoID = req.params.id;
-    const nuevoMago = req.body;
-    productoService.nuevoMago(elementoID, nuevoMago);
-    console.log(nuevoMago);
-    res.redirect('pagina_detalle_grupoc/' + elementoID);
+router.post('/pagina_detalle_grupoc/:id/GuardarMago',(req,res) => {
+    let elementoID = req.params.id;
+    let mago = req.body;
+    console.log(req.params.id);
+    productoService.addSubElement(elementoID,mago);
+    res.redirect('/pagina_detalle_grupoc/' + elementoID);
 })
 
 

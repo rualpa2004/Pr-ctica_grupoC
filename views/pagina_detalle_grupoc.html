@@ -13,7 +13,6 @@
 
 <body>
     <div class="container-fluid"></div>
-    <form id="MyForm">
         <div class="pagina">                <!--Div que engloba todo lo que lleva la página-->
             <div class="row row-cols-2"> <!--Dividimos el container en 2 columnas-->
                 <div class="col-lg-6 col-sm-12"> <!--Posiciones de la primera columna dependiendo de las dimensiones de la pantalla-->
@@ -97,7 +96,7 @@
                                 </ul>
                             </div>
                             <br>
-                            <form method="post" action="/nuevoMago/{{id}}">
+                            <form method="post" action="/pagina_detalle_grupoc/{{id}}/GuardarMago">
                                 <label for="name" class="bg-dark text-light">Añadir un nuevo mago:</label>
                                 <br>
                                 <input type="text" id="Nombre_mago_nuevo" placeholder="Mago Nuevo" name="newNombreMago">
@@ -105,7 +104,7 @@
                                 <br>
                                 <label for="name" class="bg-dark text-light">Añadir descripción</label>
                                 <br>
-                                <input type="text" id="Descripción_nuevo_mago" placeholder="Descripción del mago" name="newDescripcionMago">
+                                <textarea type="text" id="Descripción_nuevo_mago" placeholder="Descripción del mago" name="newDescripcionMago"></textarea>
                                 <br>
                                 <br>
                                 <button type="submit">Guardar mago</button>
@@ -140,7 +139,6 @@
                 </div>
             </div>
         </div>
-    </form> 
     </div>
 </body>
 </html>

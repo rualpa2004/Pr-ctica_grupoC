@@ -52,7 +52,7 @@ const elements = [
         newNombre: 'Rana de Chocolate',
         newDescripcion: 'Este producto es muy divertido... pero cierra puertas y ventanas que es más escurridizo de lo que parece. Además viene con un divertido cromo de un mago/bruja.¡Hay más de 100, colecciónalos!',
         newPrecio: '14.50',
-        newEfectosSecundarios: 'En el caso de estar caducado no consumir de ninguna manera.Al menos si quieres seguir siendo humano y no ir a clase dando saltos... Producto peligroso, al consumir en mal estado puede producir transformación progresiva en rana.',
+        newEfectosSecundarios: 'En el caso de estar caducado no consumir de ninguna manera. Al menos si quieres seguir siendo humano y no ir a clase dando saltos... Producto peligroso, al consumir en mal estado puede producir transformación progresiva en rana.',
         newImagen1: 'https://www.curiosite.es/img/auto_catalogo/w618/31321.jpg',
         newImagen2: 'https://storage.googleapis.com/catalog-pictures-carrefour-es/catalog/pictures/hd_510x_/0849421004651_1.jpg',
         newImagen3: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQfgfG9YxrWUHMZH8yXAsTA3eLxx7D8Y5nkQ&usqp=CAU',
@@ -208,7 +208,7 @@ export function addElement(element) {
 }
 
 export function addSubElement(Id,subElement) { // Recibe el id del elemento padre y el subelemento
-    let elementFather = elements.get(Id); // Obtiene el elemento padre
+    let elementFather = elements.getElementByID(Id); // Obtiene el elemento padre
 
     if (elementFather) {
         let id = elementFather.nextSubElementId++; // Crea un id para el subelemento y lo incrementa
@@ -229,18 +229,6 @@ export function deleteElement(id){
 
 export function mostrarMagos(id) {
     return elements[id].magos;
-}
-
-
-export function nuevoMago(elementoID, nuevoMago) {
-    let elemento = elements.getElementByID(elementoID);
-    let numMagoNuevo = magos.length + 1;
-    let MagoNuevo = {
-        MagoNuevoID: MagoNuevo.numMagoNuevo++,
-        newNombreMago: MagoNuevo.newNombreMago,
-        newDescripcion: MagoNuevo.newDescripcion};
-    elements.magos.push(elemento, nuevoMago);
-    return MagoNuevo;
 }
 
 export function editarProducto(elementData) {
