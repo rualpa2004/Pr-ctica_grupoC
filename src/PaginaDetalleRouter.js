@@ -41,7 +41,6 @@ router.get('/pagina_detalle_grupoc',(req,res) => {
 router.post('/pagina_detalle_grupoc/:id/GuardarMago',(req,res) => {
     let elementoID = req.params.id;
     let mago = req.body;
-    console.log(req.params.id);
     productoService.addSubElement(elementoID,mago);
     res.redirect('/pagina_detalle_grupoc/' + elementoID);
 })

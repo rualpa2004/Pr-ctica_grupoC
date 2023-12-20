@@ -207,15 +207,15 @@ export function addElement(element) {
     elements.set(element.id, element);
 }
 
-export function addSubElement(Id,subElement) { // Recibe el id del elemento padre y el subelemento
-    let elementFather = elements.getElementByID(Id); // Obtiene el elemento padre
+export function addSubElement(Id,nuevoMago) { // Recibe el id del elemento padre y el subelemento
+    let elementFather = getElementByID(Id); // Obtiene el elemento padre
 
     if (elementFather) {
         let id = elementFather.nextSubElementId++; // Crea un id para el subelemento y lo incrementa
-        subElement.id = id.toString(); // Convierte el id a string para que no de error
-        elementFather.AllsubElements.push(subElement); // Usa push para agregar el subelement al array
+        nuevoMago.id = id.toString(); // Convierte el id a string para que no de error
+        elementFather.magos.push(nuevoMago); // Usa push para agregar el subelement al array
         
-        return subElement;
+        return nuevoMago;
     } else {
         console.error(`Elemento con id ${Id} no encontrado.`);
         return null;
@@ -229,18 +229,6 @@ export function deleteElement(id){
 
 export function mostrarMagos(id) {
     return elements[id].magos;
-}
-
-
-export function nuevoMago(elementoID, nuevoMago) {
-    let elemento = elements.getElementByID(elementoID);
-    let numMagoNuevo = magos.length + 1;
-    let MagoNuevo = {
-        MagoNuevoID: MagoNuevo.numMagoNuevo++,
-        newNombreMago: MagoNuevo.newNombreMago,
-        newDescripcion: MagoNuevo.newDescripcion};
-    elements.magos.push(elemento, nuevoMago);
-    return MagoNuevo;
 }
 
 export function editarProducto(elementData) {
