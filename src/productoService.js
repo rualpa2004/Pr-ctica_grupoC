@@ -232,19 +232,23 @@ export function mostrarMagos(id) {
 }
 
 export function editarProducto(elementData) {
-    const element = {
-        id: elementData.id,
-        Nombre: elementData.newNombre,
-        Descripcion: elementData.newDescripcion,
-        Precio: elementData.newPrecio,
-        EfectosSecundarios: elementData.newEfectosSecundarios,
-        Imagen1: elementData.newImagen1,
-        Imagen2: elementData.newImagen2,
-        Imagen3: elementData.newImagen3,
-        Leche: elementData.Leche,
-        Cacao: elementData.Cacao,
-        Avellanas: elementData.Avellanas,
+    const id = Number(elementData.id); // Convierte el id a número (ÜNICO ELEMENTO NO EDITABLE)
+    const element = elements.find(e => e.id === id); // Busca el elemento por id
+    if (!element) {
+        throw new Error('Elemento no encontrado');
     }
+    element.newNombre = elementData.newNombre;
+    element.newDescripcion = elementData.newDescripcion;
+    element.newPrecio = elementData.newPrecio;
+    element.newEfectosSecundarios = elementData.newEfectosSecundarios;
+    element.newImagen1 = elementData.newImagen1;
+    element.newImagen2 = elementData.newImagen2;
+    element.newImagen3 = elementData.newImagen3;
+    element.Leche = elementData.Leche;
+    element.Cacao = elementData.Cacao;
+    element.Avellanas = elementData.Avellanas;
+
+    
     return element;
 }
 

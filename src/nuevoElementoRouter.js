@@ -4,6 +4,7 @@ import { check, validationResult } from 'express-validator';
 
 const router = express.Router();
 
+router.use(express.static('public')); // Cargar CSS
 
 router.get('/', (req, res) => {
     res.render('index', {elements: productoService.getAllElements()});
@@ -49,6 +50,38 @@ router.get('/pagina_detalle_grupoc/:id', (req, res) => {
         res.render('pagina_error', {message_error: 'Elemento no encontrado'});
     }
 });
+
+router.get('/pagina_detalle_grupoc/:id/editar', (req, res) => { 
+    const element = productoService.getElementByID(req.params.id);
+
+    if (!element) {
+        res.render('pagina_error', {message_error: 'Elemento no encontrado'});
+    } else {
+        res.render('nuevoElemento', { element: element});  // <= Pasamos el elemento a la vista
+    }
+});
+
+
+router.post('/pagina_detalle_grupoc/:id/editar', 
+ [ check('newNombre').notEmpty().withMessage('Por favor, introduce un nombre válido.'),
+check('newDescripcion').notEmpty().withMessage('Por favor, introduce una descripción.'),
+check('newPrecio').notEmpty().withMessage('Por favor, introduce un precio válido.'),
+check('newEfectosSecundarios').notEmpty().withMessage('Por favor, introduce un efecto secundario.'),
+check('newImagen1').notEmpty().withMessage('Por favor, introduce una imagen válida.'),
+], (req, res) => {
+const errors = validationResult(req);
+if (!errors.isEmpty()) {
+    // Manejar los errores de validación aquí
+    res.render('pagina_error', {message_error: 'Elemento no encontrado'});
+}
+const elementData = { // <= NUEVO Objeto 
+    id: req.params.id, // <= Añadimos el id
+    ...req.body // <= Operador Spread que sirve para COPIAR un objeto
+};
+    const newElement = productoService.editarProducto(elementData); // <= Pasamos el objeto al servicio
+    res.redirect(`/pagina_detalle_grupoc/${newElement.id}`); // <= Redireccionamos a la página de detalle
+}
+);
 
 // => CAMBIOS: Página_Detalle_grupoC por pagina_detalle_grupoc
 router.post('/pagina_detalle_grupoc/:id/delete', (req, res) => {
