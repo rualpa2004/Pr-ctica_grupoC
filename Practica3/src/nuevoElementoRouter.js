@@ -1,8 +1,22 @@
 import express from 'express';
 import * as productoService from './productoService.js';
 import { check, validationResult } from 'express-validator';
+import { getAllElements } from './productoService.js';
+
 
 const router = express.Router();
+
+router.get('/', (req, res) => {
+    const elements = productoService.getAllElements(0,4);
+    res.render('index', {elements: elements});
+});
+
+router.get('/elementos', (req, res) => {
+
+    const elements = getAllElements();
+
+    res.render('elementos', {elements: elements});
+});
 
 router.use(express.static('public')); // Cargar CSS
 

@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans+Collegiate+One&family=Fuggles&display=swap" rel="stylesheet"> <!--Fuente para las letras del titulo (h1)-->
+    <script src="app.js"></script>
 </head>
 
 <body>
@@ -19,6 +20,7 @@
     <div class="container text-center"> <!--contenedor de todos los elementos, dividido en 12 (luego se dividen en filas y columnas)-->
         
         <div class="row">  <!--Fila 1-->
+            <div id="elementos">
             {{#elements}}
             <div class="col-12 col-sm-6 col-lg-3"> <!--Columna 1 (Fila 1) ocupa 6 espacios del contenedor en tamaño de tablet, 3 espacios para ordenaor o portatil, y todos los espacios en el resto de casos-->
                 <div class="producto"> <!--clase producto para que todos los elementos tengan el mismo estilo en css-->
@@ -32,9 +34,12 @@
                 </div>
             </div>
             {{/elements}}
+            </div>
         </div>
 
-
+        <div class="boton"> <!--boton que lleva a la pagina de nuevo elemento-->
+            <button type="button" class="nuevo" onclick='loadMore()'>Cargar mas</button>
+        </div>
         <div class="boton"> <!--boton que lleva a la pagina de nuevo elemento-->
             <a href="nuevoelemento"><button type="button" class="nuevo">Nuevo Producto</button></a>
         </div>

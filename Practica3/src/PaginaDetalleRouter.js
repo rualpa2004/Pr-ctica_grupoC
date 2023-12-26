@@ -1,8 +1,24 @@
 import express from 'express';
 import * as productoService from './productoService.js';
 import {mostrarMagos} from "./productoService.js";
+import { getAllElements } from './productoService.js';
 
 const router = express.Router();
+
+router.get('/', (req, res) => {
+    const elements = productoService.getAllElements(0,4);
+    res.render('index', {elements: elements});
+});
+
+router.get('/elementos', (req, res) => {
+
+    const from = parseInt(req.query.from);
+    const to = parseInt(req.query.to);
+
+    const elements = getAllElements(from,to);
+
+    res.render('elementos', {elements: elements});
+});
 
 router.get('/', (req, res) => {
 
