@@ -12,8 +12,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/elementos', (req, res) => {
+    const from = parseInt(req.query.from);
+    const to = parseInt(req.query.to);
 
-    const elements = getAllElements();
+    const elements = getAllElements(from,to);
 
     res.render('elementos', {elements: elements});
 });

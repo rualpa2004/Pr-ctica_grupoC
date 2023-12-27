@@ -2,11 +2,11 @@ async function loadMore(){
 
     const response = await fetch(`/elementos`);
 
-    const newelements = await response.text();
+    const newelementos = await response.text();
   
-    const elementsDiv = document.getElementById("elementos");
+    const elementosDiv = document.getElementById("elementos");
 
-    elementsDiv.innerHTML += newelements;
+    elementosDiv.innerHTML += newelementos;
 
     loadMoreRequests++;
 }
