@@ -30,6 +30,21 @@ router.get('/nuevoElemento', (req, res) => {
     res.render('nuevoElemento');
 });
 
+let existingUsernames = [];
+
+router.get('/availableElementName', (req, res) => {
+
+    let username = req.query.username;
+
+    let availableElementName = existingUsernames.indexOf(username) === -1;
+
+    let response = {
+        available: availableElementName
+    }
+
+    res.json(response);
+});
+
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);

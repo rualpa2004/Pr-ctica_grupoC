@@ -7,6 +7,15 @@
     font-size: 5em;
 }
 
+.titulo input {         /*Ajustar tamaño del formulario*/
+    text-align: center;
+    align-items: right;
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+    margin-left: 500px;
+    border-radius: 5cm;
+}
+
 body {
     background-image: url('https://res.cloudinary.com/teepublic/image/private/s--5hHG_gX6--/t_Preview/b_rgb:5e366e,c_limit,f_jpg,h_630,q_90,w_630/v1483530754/production/designs/1028847_1.jpg'); /*Imagen de fondo*/
     background-position: center center; /*Para dejar la imagen de fondo centrada, vertical y horizontalmente */

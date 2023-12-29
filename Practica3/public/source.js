@@ -10,3 +10,22 @@ async function loadMore(){
 
     loadMoreRequests++;
 }
+
+async function findElementName() {
+
+    let usernameInput = document.getElementById('elementName');
+
+    let name = usernameInput.value;
+
+    const response = await fetch(`/availableElementName?elementName=${name}`);
+
+    const responseObj = await response.json();
+
+    let message = responseObj.available? 
+        '<p>Disponible</p>':
+        '<p>No disponible</p>';
+
+    const messageDiv = document.getElementById('message');
+    messageDiv.innerHTML = message;
+
+}
