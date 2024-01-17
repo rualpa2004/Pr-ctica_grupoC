@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     res.render('nuevoElemento', {element: element});
 });
 
-router.post('/saveelemento', 
+router.post('/nuevoelemento', 
     [ check('newNombre').notEmpty().withMessage('Por favor, introduce un nombre válido.'),
     check('newDescripcion').notEmpty().withMessage('Por favor, introduce una descripción.'),
     check('newPrecio').notEmpty().withMessage('Por favor, introduce un precio válido.'),
